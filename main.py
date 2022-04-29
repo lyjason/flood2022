@@ -13,7 +13,7 @@ ab = pd.read_csv('alphaBeta.csv', index_col=0)
 
 
 def calc_design_storm(table, prob, cv, h):
-    col_p = table[prob]
+    col_p = table[prob]     # 这一步是什么意思
     hp = np.interp(cv, col_p.index, col_p.values) * h
     return hp
 
@@ -56,7 +56,7 @@ def calc_hour_rainfall(table, hp, f):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    p = '33.33'     # 计算频率P
+    p = '33.33'# 计算频率P
     cvs = [0.7, 0.8, 0.9]       # cv1,cv6,cv24的值
     hs = [1, 10, 100]       # H1,H6,H24的值
     f = 350     # 未知含义
