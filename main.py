@@ -53,6 +53,7 @@ def calc_hour_rainfall(table, hp, f):
 
     return hour_hp, hour_alpha, hour_hs, hour_hs1
 
+def baoyugochen()
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
