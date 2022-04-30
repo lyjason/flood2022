@@ -56,6 +56,8 @@ def calc_hour_rainfall(table, hp, f):
 
 
 def process_speculation(table, zone=1):
+    pailiexu = (table.iloc[zone]).to_list
+
     pass
 
 
