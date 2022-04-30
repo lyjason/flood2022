@@ -56,10 +56,10 @@ def calc_hour_rainfall(table, hp, f):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    p = '33.33'# 计算频率P
+    p = '33.33'     # 计算频率P
     cvs = [0.7, 0.8, 0.9]       # cv1,cv6,cv24的值
     hs = [1, 10, 100]       # H1,H6,H24的值
-    f = 350     # 未知含义
+    f = 350     # 面积
     hps = [calc_design_storm(kp, p, cvs[i], hs[i]) for i in range(len(cvs))]        # 设计暴雨计算
     print(hps)
     hour_hp, hour_alpha, hour_hs, hour_hs1 = calc_hour_rainfall(ab, hps, f)
