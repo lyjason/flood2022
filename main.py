@@ -10,10 +10,10 @@ from math import log
 
 kp = pd.read_csv('kp.csv', index_col=0)
 ab = pd.read_csv('alphaBeta.csv', index_col=0)
-
+sheet5 = pd.read_csv('sheet5.csv',index_col=0)
 
 def calc_design_storm(table, prob, cv, h):
-    col_p = table[prob]     # 这一步是什么意思
+    col_p = table[prob]
     hp = np.interp(cv, col_p.index, col_p.values) * h
     return hp
 
@@ -61,10 +61,5 @@ if __name__ == '__main__':
     hs = [1, 10, 100]       # H1,H6,H24的值
     f = 350     # 面积
     hps = [calc_design_storm(kp, p, cvs[i], hs[i]) for i in range(len(cvs))]        # 设计暴雨计算
-    print(hps)
     hour_hp, hour_alpha, hour_hs, hour_hs1 = calc_hour_rainfall(ab, hps, f)
-    print(hour_hp)
-    print(hour_alpha)
-    print(hour_hs)
-    print(hour_hs1)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
