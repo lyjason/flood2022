@@ -55,10 +55,13 @@ def calc_hour_rainfall(table, hp, f):
     return hour_hp, hour_alpha, hour_hs, hour_hs1
 
 
-def process_speculation(table, zone=1):
-    pailiexu = (table.iloc[zone]).to_list
-
-    pass
+def process_speculation(table, zone=1): # 一个区(zone)就是一个行，为了保留未来选区功能，此处默认为1，即第一行
+    pailiexu = (table.iloc[zone]).to_list() # 抓取一行，输出为数组
+    h1f = []   # 定义H1f为空数组用于接收成果
+    for i in pailiexu:
+        temp_list = hour_hs1[i-1] # 利用list固有的元素号来间接实现遍历排序，本来想的是把hour_hs1转化为dic类型,但发现list类型本身就有元素号
+        h1f.append(temp_list)
+    return h1f
 
 
 
@@ -71,5 +74,8 @@ if __name__ == '__main__':
     hs = [1, 10, 100]  # H1,H6,H24的值
     f = 350  # 面积
     hps = [calc_design_storm(kp, p, cvs[i], hs[i]) for i in range(len(cvs))]  # 设计暴雨计算
-    hour_hp, hour_alpha, hour_hs, hour_hs1 = calc_hour_rainfall(ab, hps, f)
+    hour_hp, hour_alpha, hour_hs, hour_hs1 = calc_hour_rainfall(ab, hps, f) # 各历时雨量计算
+    h1f = process_speculation(sheet5)   # 暴雨过程推求
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+
